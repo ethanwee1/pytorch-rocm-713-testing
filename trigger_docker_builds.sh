@@ -7,7 +7,9 @@ REPO="ROCm/pytorch"
 WORKFLOW="build_portable_linux_pytorch_dockers.yml"
 PYTHON_VERSION="3.10"
 INDEX_URL="https://rocm.prereleases.amd.com/"
-ROCM_VERSION=""  # Leave empty to auto-discover, or set specific version like "7.13.0a20260413"
+# Available in prereleases: 7.9.0rc1, 7.10.0rc0-2, 7.11.0rc0-2, 7.12.0rc1
+# Set to specific version or leave empty to auto-discover from latest wheel
+ROCM_VERSION="7.12.0rc1"  # Update to 7.13 when available in prereleases
 
 # Array of PyTorch versions to build
 PYTORCH_VERSIONS=("2.9" "2.10" "2.11")
