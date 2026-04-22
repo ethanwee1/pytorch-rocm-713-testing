@@ -1,5 +1,5 @@
 #!/bin/bash
-# Pull Docker images and run tests for PyTorch with ROCm 7.12.0rc1
+# Pull Docker images and run tests for PyTorch with ROCm 7.13
 # Usage: ./pull_and_test_dockers.sh <pytorch_version> <gfx_arch>
 # Example: ./pull_and_test_dockers.sh 2.9 gfx942
 
@@ -30,9 +30,10 @@ esac
 # Docker image details (adjust based on actual registry and naming)
 DOCKER_REGISTRY="docker.io"
 DOCKER_IMAGE="rocm/pytorch-private"
-# Image tag format might be something like: 2.9-rocm7.12.0rc1-py3.10-gfx94X-dcgpu
-# You may need to adjust this based on actual tagging convention
-ROCM_VERSION="7.12.0rc1"
+# Image tag format might be something like: 2.9-rocm7.13-py3.10-gfx94X-dcgpu
+# The workflow auto-discovers ROCm version, so tag won't include specific version
+# We'll need to check what tag format the workflow actually uses
+ROCM_VERSION="7.13"  # Using nightlies with auto-discovered version
 DOCKER_TAG="${PYTORCH_VERSION}-rocm${ROCM_VERSION}-py${PYTHON_VERSION}-${GFX_FAMILY}"
 
 echo "=========================================="
