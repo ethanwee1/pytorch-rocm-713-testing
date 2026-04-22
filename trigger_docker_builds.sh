@@ -36,7 +36,7 @@ trigger_build() {
 
     gh workflow run "${WORKFLOW}" \
         --repo "${REPO}" \
-        --ref main \
+        --ref develop \
         -f pytorch_repo="ROCm/pytorch" \
         -f pytorch_branch="release/${pytorch_version}" \
         -f python_version="${PYTHON_VERSION}" \
