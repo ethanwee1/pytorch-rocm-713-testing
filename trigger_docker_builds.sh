@@ -6,8 +6,8 @@ set -e
 REPO="ROCm/pytorch"
 WORKFLOW="build_portable_linux_pytorch_dockers.yml"
 PYTHON_VERSION="3.10"
-# Using public nightlies (prereleases requires authentication)
-INDEX_URL="https://rocm.nightlies.amd.com/"
+# Using public nightlies v2-staging (prereleases requires authentication)
+INDEX_URL="https://rocm.nightlies.amd.com/v2-staging/"
 # Leave empty to auto-discover the latest ROCm version from nightlies (currently 7.13)
 ROCM_VERSION=""  # Auto-discover latest
 
