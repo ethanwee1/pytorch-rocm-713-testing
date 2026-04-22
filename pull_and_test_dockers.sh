@@ -1,5 +1,5 @@
 #!/bin/bash
-# Pull Docker images and run tests for PyTorch with ROCm 7.13
+# Pull Docker images and run tests for PyTorch with ROCm 7.12.0rc1
 # Usage: ./pull_and_test_dockers.sh <pytorch_version> <gfx_arch>
 # Example: ./pull_and_test_dockers.sh 2.9 gfx942
 
@@ -30,9 +30,10 @@ esac
 # Docker image details (adjust based on actual registry and naming)
 DOCKER_REGISTRY="docker.io"
 DOCKER_IMAGE="rocm/pytorch-private"
-# Image tag format might be something like: 2.9-rocm7.13-py3.10-gfx94X-dcgpu
+# Image tag format might be something like: 2.9-rocm7.12.0rc1-py3.10-gfx94X-dcgpu
 # You may need to adjust this based on actual tagging convention
-DOCKER_TAG="${PYTORCH_VERSION}-rocm7.13-py${PYTHON_VERSION}-${GFX_FAMILY}"
+ROCM_VERSION="7.12.0rc1"
+DOCKER_TAG="${PYTORCH_VERSION}-rocm${ROCM_VERSION}-py${PYTHON_VERSION}-${GFX_FAMILY}"
 
 echo "=========================================="
 echo "PyTorch Docker Test Setup"
@@ -152,7 +153,7 @@ echo "Generating test summary..."
 cat > ${OUTPUT_DIR}/test_summary.md <<EOF
 # PyTorch ${PYTORCH_VERSION} Test Results - ${GFX_ARCH}
 
-**ROCm Version:** 7.13
+**ROCm Version:** ${ROCM_VERSION}
 **Python Version:** ${PYTHON_VERSION}
 **GFX Architecture:** ${GFX_ARCH}
 **Docker Image:** ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${DOCKER_TAG}
